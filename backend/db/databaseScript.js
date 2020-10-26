@@ -1,0 +1,5 @@
+db.users.createIndex({"username":1},{unique:true})
+//db.users.remove({"username":"xxx@hotmail.com"})
+//db.users.updateOne({"username":"xxx@hotmail.com"},{$set:{"rol.rolnombre":"admin"}})
+db.users.updateOne({"username":"admin@mascotas.com"},{$set:{"rol.rolnombre":"admin"}})
+db.users.updateOne({"username":"fundacion@mascota.com"},{$set:{"rol.rolnombre":"fundacion"}})
