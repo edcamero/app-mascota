@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"app-mascota/view"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -9,7 +10,6 @@ import (
 
 	"github.com/edcamero/app-mascota/backend/db"
 	"github.com/edcamero/app-mascota/backend/environment"
-	"github.com/edcamero/app-mascota/backend/view"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
 

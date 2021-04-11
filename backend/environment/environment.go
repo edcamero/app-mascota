@@ -1,44 +1,47 @@
 package environment
 
 import (
-    "os"
-    "strings"
+	"os"
+	"strings"
+
+	"github.com/joho/godotenv"
 )
 
 const (
-    PROD Env = "production"
-    DEV  Env = "development"
-    DATABASE string ="Mascota"
-    SECRETKEY string="Unipamplona"
-
+	PROD  Env = "production"
+	DEV   Env = "development"
+	TEST  Env = "test"
+	LOCAL Env = "local"
+	EMPTY Env = ""
 )
 
 type Env string
 
 func (e Env) String() string {
-    return string(e)
+	return string(e)
 }
 
-func ReadEnv(key string, def Env) Env {
-    v := Getenv(key, def.String())
-    if v == "" {
-        return def
-    }
+func ReadEnv(environment Env) {
 
-    env := Env(strings.ToLower(v))
-    switch env {
-    case PROD, DEV: // allowed.
-    default:
-        panic("unexpected environment " + v)
-    }
-
-    return env
+	env := Env(strings.ToLower(environment.String()))
+	switch env {
+	case PROD, DEV, TEST, LOCAL, EMPTY:
+		godotenv.Load(".env." + env.String() + ".local")
+		godotenv.Load(".env." + env.String())
+		godotenv.Load()
+	default:
+		panic("unexpected environment " + env)
+	}
 }
 
-func Getenv(key string, def string) string {
-    if v := os.Getenv(key); v != "" {
-        return v
-    }
-
-    return def
+func Getenv(key string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return ""
 }
+
+var (
+	DATABASE  string = Getenv("DATABASE")
+	SECRETKEY string = Getenv("SECRETKEY")
+)

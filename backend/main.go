@@ -1,6 +1,7 @@
 package main
 
 import (
+	"app-mascota/environment"
 	"os"
 
 	"github.com/edcamero/app-mascota/backend/db"
@@ -12,6 +13,7 @@ import (
 
 func main() {
 	app := iris.New()
+	environment.ReadEnv("")
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080" //localhost
