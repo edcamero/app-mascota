@@ -15,7 +15,7 @@ require (
 	github.com/iris-contrib/middleware/jwt v0.0.0-20201017024110-39b50ffeb885
 	github.com/iris-contrib/pongo2 v0.0.1 // indirect
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
-	github.com/kataras/iris/v12 v12.2.0-alpha.0.20201012125253-8e51a296b968
+	github.com/kataras/iris/v12 v12.2.0-alpha2.0.20210404172421-ce6c455601af
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/ryanuber/columnize v2.1.0+incompatible // indirect
 	github.com/smartystreets/goconvey v1.6.4 // indirect
