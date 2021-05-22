@@ -4,7 +4,6 @@ import (
 	"app-mascota/environment"
 	"os"
 
-	"github.com/edcamero/app-mascota/backend/db"
 	myrouter "github.com/edcamero/app-mascota/backend/router"
 	"github.com/iris-contrib/middleware/cors"
 
@@ -31,7 +30,7 @@ func main() {
 	app.Logger().SetLevel("debug")
 
 	app.Handle("GET", "/ping", func(ctx iris.Context) {
-		ctx.JSON(iris.Map{"message": "hacienod ping"})
+		ctx.JSON(iris.Map{"message": "haciendo ping"})
 	})
 	app.Handle("GET", "/", func(ctx iris.Context) {
 		ctx.HTML("<h1>Welcome</h1>")
@@ -39,10 +38,6 @@ func main() {
 
 	app.Get("/hello", func(ctx iris.Context) {
 		ctx.JSON(iris.Map{"message": "Hello Iris!"})
-	})
-
-	app.Get("/migraciones", func(ctx iris.Context) {
-		db.MigrateDB()
 	})
 
 	myrouter.AddRutas(app)

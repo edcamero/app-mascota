@@ -23,7 +23,7 @@ type Token struct {
 
 func Login(ctx iris.Context) {
 
-	user := models.User{}
+	user := models.
 	//err := json.NewDecoder(ctx.Request().Body).Decode(&filter)
 	username := ctx.FormValue("username")
 	password := util.Encrypt([]byte(ctx.FormValue("password")))
@@ -37,6 +37,7 @@ func Login(ctx iris.Context) {
 	err := collection.FindOne(context.TODO(), filter).Decode(&user)
 	if err != nil {
 		log.Println(err)
+		ctx.StopWithStatus(iris.Status)
 		return
 	} else {
 		fmt.Println(user)
